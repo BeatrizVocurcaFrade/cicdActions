@@ -14,9 +14,9 @@ flowchart LR
 
 Runs on every push and pull request to `develop` and `master`:
 
-1. Checkout, Java setup and Flutter stable ([subosito/flutter-action](https://github.com/subosito/flutter-action)).
+1. Checkout, Java 17 (Temurin) and Flutter stable with caching ([subosito/flutter-action](https://github.com/subosito/flutter-action)).
 2. `flutter pub get` and `flutter analyze`.
-3. Formatting gate: fails the build if `lib/` or `test/` are not formatted.
+3. Formatting gate: `dart format` fails the build if `lib/` or `test/` are not formatted.
 4. `flutter test --coverage`, plus a machine-readable JSON test report.
 5. Coverage gate with [very_good_coverage](https://github.com/VeryGoodOpenSource/very_good_coverage).
 
@@ -29,4 +29,4 @@ Runs when a version tag (`v*`) is pushed: the test job runs first, then two buil
 
 ## Notes
 
-Built in January 2023. Current equivalents of the actions used here are `actions/checkout@v4`, `actions/setup-java@v4`, `subosito/flutter-action@v2` and `actions/upload-artifact@v4`, and `dart format` replaces `flutter format` on Flutter 3.x.
+Built in January 2023 and updated in 2026 to current tooling: `actions/checkout@v4`, `actions/setup-java@v4` (Temurin 17), `subosito/flutter-action@v2` with caching, `actions/upload-artifact@v4`, and `dart format` in place of the removed `flutter format`.
